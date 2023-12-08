@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Haruki",
+    "last_name": "Murakami",
+    "url_image": "asdf",
+    "country": "Japón"
+  },
+  {
+    "id": 2,
+    "name": "William",
+    "last_name": "Shakespare",
+    "url_image": "asdf",
+    "country": "Inglaterra"
+  }
+]
