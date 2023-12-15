@@ -1,4 +1,11 @@
-export type Country = 'Japón' | 'Reino Unido' | 'Inglaterra' | 'España' | 'Italia';
+export enum Country {
+  Japon = 'Japón',
+  ReinoUnido = 'Reino Unido',
+  Inglaterra = 'Inglaterra',
+  España = 'España',
+  Italia = 'Italia',
+  Mexico = 'México'
+}
 
 export interface Author {
   id: number,

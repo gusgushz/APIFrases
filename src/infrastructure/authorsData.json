@@ -12,5 +12,12 @@
     "last_name": "Shakespare",
     "url_image": "asdf",
     "country": "Inglaterra"
+  },
+  {
+    "id": 3,
+    "name": "Juan",
+    "last_name": "Rulfo",
+    "url_image": "asdf",
+    "country": "México"
   }
 ]

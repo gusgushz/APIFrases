@@ -1,5 +1,5 @@
 import express from 'express';
-import authorRouter from './routes/authorsRoute';
+import authorRouter from './routes_controllers/authorsRoute';
 
 const app = express();
 app.use(express.json()); //middleware que transforma la req.body a un json
