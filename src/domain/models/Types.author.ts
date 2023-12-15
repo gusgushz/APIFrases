@@ -4,7 +4,8 @@ export enum Country {
   Inglaterra = 'Inglaterra',
   España = 'España',
   Italia = 'Italia',
-  Mexico = 'México'
+  Mexico = 'México',
+  Rusia = 'Rusia'
 }
 
 export interface Author {
