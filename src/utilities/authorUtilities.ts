@@ -37,14 +37,14 @@ const validCountry = (countryFromRequest: any): Country => {
   return countryFromRequest; 
 };
 
-export const toNewAuthorAdded = (object: any):AuthorDTO => {
+export const toValidatedAuthor  = (body: any):AuthorDTO => {
   const newAuthor:AuthorDTO = {
-    name: validName(object.name),
-    last_name: validLastName(object.last_name),
-    url_image: validUrlImage(object.url_image),
-    country: validCountry(object.country)
-  }
+    name: validName(body.name),
+    last_name: validLastName(body.last_name),
+    url_image: validUrlImage(body.url_image),
+    country: validCountry(body.country)
+  };
   return newAuthor;
 };
 
-export default toNewAuthorAdded;  
+export default toValidatedAuthor;  
