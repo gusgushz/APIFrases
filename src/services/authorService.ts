@@ -1,13 +1,10 @@
 import { Author } from '../domain/models/Types.author';
 import { AuthorDTO } from '../domain/dtos/Types.res_author';
-import authorData from '../infrastructure/authorsData.json';
 import database from '../../databaseService';
-
-const authors: Array<Author> = authorData as Array<Author>
 
 /*-----------------Admin Methods for me to work----------------------*/
 
-export const getAllAdmin = async () => {
+export const getAllAdmin = async (): Promise<Author[] | undefined> => {
   try{
     const authors = await database('authors').select('*');
     return authors.map(({id, name, last_name, url_image, country}) => ({
@@ -92,7 +89,7 @@ export const deleteAuthor = async (id: string): Promise<Author | undefined> => {
 
 /*-----------------Public Methods for the public in the APP-----------------*/
 
-export const getAll = async () => {
+export const getAll = async (): Promise<AuthorDTO[] | undefined> => {
   try {
     const authors = await database('authors').select('*');
     return authors.map(({name, last_name, url_image, country}) => {
@@ -107,24 +104,46 @@ export const getAll = async () => {
     throw new Error(`Error buscando autores: ${error.message}`);
   }
 };
-//Lo voy a dejar pero no se si a futuro me sirva
-export const findByName = (name: string): Author[] | undefined => {
-  const similarAuthors = authors.filter(a => 
-    a.name.toLowerCase().includes(name.toLowerCase()));
-  if (similarAuthors.length > 0) {
-    return similarAuthors.map(({...authorDTO }) => authorDTO);
-  } else {
-    return undefined;
+//Lo voy a dejar pero no se si a futuro me sirva-------------------------------------------------------------
+export const findByName = async (name: string): Promise<AuthorDTO[] | undefined> => {
+  try {
+    const authors = await database('authors').where('name', 'like', `%${name}%`);
+
+    if (authors.length > 0) {
+      return authors.map(({name, last_name, url_image, country}) =>{
+        return {
+          name, 
+          last_name,
+          url_image,
+          country
+        }
+      })
+    } else {
+      return undefined;
+    }
+  } catch (error:any) {
+    throw new Error(`Error buscando autores: ${error.message}`);
   }
 };
-//Lo voy a dejar per no se si a futuro me sirva
-export const findByLastName = (last_name: string): Author[] | undefined => {
-  const similarAuthors = authors.filter(a =>  
-    a.last_name.toLowerCase().includes(last_name.toLowerCase()));
-  if (similarAuthors.length > 0) {
-    return similarAuthors.map(({...authorDTO }) => authorDTO);
-  } else {
-    return undefined;
+//Lo voy a dejar per no se si a futuro me sirva---------------------------------------------------------------
+export const findByLastName = async (last_name: string): Promise<AuthorDTO[] | undefined> => {
+  try {
+    const authors = await database('authors').where('name', 'like', `%${last_name}%`);
+
+    if (authors.length > 0) {
+      return authors.map(({name, last_name, url_image, country}) =>{
+        return {
+          name, 
+          last_name,
+          url_image,
+          country
+        }
+      })
+    } else {
+      return undefined;
+    }
+  } catch (error:any) {
+    throw new Error(`Error buscando autores: ${error.message}`);
   }
 };
 
@@ -149,20 +168,4 @@ export const findFullName = async (authorName: string): Promise<AuthorDTO[] | un
   } catch (error:any) {
     throw new Error(`Error buscando autores: ${error.message}`);
   }
-  /*
-  const similarAuthors = authors.filter(a =>  
-    a.name.toLowerCase().includes(authorName.toLowerCase()) ||
-    a.last_name.toLowerCase().includes(authorName.toLowerCase()));
-  if (similarAuthors.length > 0) {
-    return similarAuthors.map(({name, last_name, url_image, country}) =>{
-      return {
-        name, 
-        last_name,
-        url_image,
-        country
-      }
-    })
-  } else {
-    return undefined;
-  }*/
 };

@@ -28,3 +28,7 @@ In this update i finally finish my APIREST, with this i meant to say that i have
 (GET, POST, PUT, DELETE) working. I only have one issue with the PUT. Using thunderclient it updates 
 perfectly but sometimes it says "Connection was forcibly closed by a peer", however the input works fine and the data on my JSON is updating as well. So who knows. 
 But hey, at least is working.
+
+## Update 4 04/01/2023
+In this update i finaly finish the crud for Author. It´s working perfecly, all the methods and requests functions fine. 
+In one day i finish almost everything that i left unfinished in vacations (mostly because i was working on a mall). At this point im really proud and exhausted. I dont quite understand everything everything that i´ve done, because i used a videotutorial and chatGPT (3.5).

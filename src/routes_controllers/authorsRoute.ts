@@ -47,7 +47,7 @@ router.put('/admin/:id', async (req, res) => {
     if (updatedAuthor) {
       res.status(200).json(updatedAuthor);
     } else {
-      res.status(404).send('Author not found');
+      res.status(404).send('Autor no encontrado');
     }
   }
   catch(error:any) {
